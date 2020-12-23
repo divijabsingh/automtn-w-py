@@ -1,0 +1,20 @@
+from selenium import webdriver
+
+
+insta=input("enter the insta handle")
+insta_link='https://www.instagram.com/'+insta+'/?hl=en'
+
+browser=webdriver.Chrome('C:\\Users\\Ajay\\Downloads\\chromedriver_win32\\chromedriver.exe')
+browser.get(insta_link)
+bio=browser.find_element_by_xpath('//div[@class="-vDIg"]').get_attribute("textContent")
+print(bio)
+f=open("user_handlebio.txt",'w+')
+l=len(bio)
+
+for i in range(l):
+try:
+f.write(bio[i])
+
+except:
+continue
+f.close()
